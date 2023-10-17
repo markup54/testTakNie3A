@@ -8,7 +8,7 @@ public class RepozytoriumPytan {
         pytania.add(new Pytanie("Czy żyrafa jest symbolem siły",
                 false,
                 R.drawable.zyrafa,
-                "Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych."));
+                "Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych. Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych. Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych. Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych. Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych. Słowo„żyrafy” symbolizuje szczerość, umiejętność słuchania, rozumienie punktu widzenia innych."));
         pytania.add(new Pytanie("Czy niedawno odkrytym zwierzęciem jest okapi",
                 true,
                 R.drawable.okapi,

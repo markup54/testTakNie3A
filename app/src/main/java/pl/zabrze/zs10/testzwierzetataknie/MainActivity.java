@@ -3,7 +3,9 @@ package pl.zabrze.zs10.testzwierzetataknie;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,20 +36,38 @@ public class MainActivity extends AppCompatActivity {
         //TODO wypełnić widok treścią i zdjęciem pytania
         imageViewZwierze = findViewById(R.id.imageView);
         textViewTrescPytania = findViewById(R.id.textView);
+        buttonDalej = findViewById(R.id.button4);
         if(savedInstanceState == null) {
             aktualne = 0;
             punkty = 0;
+            wypelnijPytaniem(aktualne);
         }
         else{
             aktualne = savedInstanceState.getInt("NRPYTANIA");
             punkty = savedInstanceState.getInt("PUNKTY");
+            //TODO trzeba poprawić wyswietlanie ostatniego zadania
+            if(aktualne<RepozytoriumPytan.podajPytania().size())
+                wypelnijPytaniem(aktualne);
+            else {
+                buttonDalej.setVisibility(View.INVISIBLE);
+                textViewTrescPytania.setText(String.format("Zakończono test z wynikiem %d punkty",punkty));
+            }
         }
-        wypelnijPytaniem(aktualne);
+
+buttonCzit =findViewById(R.id.button3);
+        buttonCzit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,PodpowiedzActivity.class);
+                intent.putExtra("NR",aktualne);
+                startActivity(intent);
+            }
+        });
 
 
 
         //TODO Obsłużyć przycisk następne pytanie
-        buttonDalej = findViewById(R.id.button4);
+
        buttonDalej.setOnClickListener(
                new View.OnClickListener() {
                    @Override
@@ -97,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void wypelnijPytaniem(int indeks){
+        Log.i("Nr pytania", String.valueOf(indeks));
         Pytanie aktualnePytanie = RepozytoriumPytan.podajPytania().get(indeks);
         textViewTrescPytania.setText(aktualnePytanie.getTrescPytania());
         imageViewZwierze.setImageResource(aktualnePytanie.getIdObrazu());
